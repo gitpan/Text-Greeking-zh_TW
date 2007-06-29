@@ -1,0 +1,14 @@
+abstract: ~
+author: Lukhnos D. Liu C<< <lukhnos@gmail.com> >>
+build_requires: 
+  Test::More: 0.42
+distribution_type: module
+generated_by: Module::Install version 0.64
+license: perl
+no_index: 
+  directory: 
+    - inc
+    - t
+requires: 
+  perl: 5.8.0
+version: 0.0.1
