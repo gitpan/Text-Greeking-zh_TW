@@ -4,12 +4,10 @@ use warnings;
 use strict;
 use v5.8.0;
 use utf8;
-use encoding 'utf8';
-use base 'Text::Greeking';
 
 use List::Util qw(shuffle);
 
-our $VERSION = '0.0.2';
+our $VERSION = '0.0.3';
 
 sub new {
     my $class =shift;

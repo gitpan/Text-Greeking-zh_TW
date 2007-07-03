@@ -1,5 +1,8 @@
 Revision history for Text-Greeking-zh_TW
 
+0.0.3 Tue Jul  3 22:00:15 CST 2007
+- Remove more unnecessaries.
+
 0.0.2 Tue Jul  3 19:11:32 CST 2007
 - Unbreak test
 
