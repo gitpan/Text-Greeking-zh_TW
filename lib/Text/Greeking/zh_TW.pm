@@ -9,8 +9,7 @@ use base 'Text::Greeking';
 
 use List::Util qw(shuffle);
 
-our $VERSION = '0.0.1';
-
+our $VERSION = '0.0.2';
 
 sub new {
     my $class =shift;
@@ -20,7 +19,6 @@ sub new {
 }
 
 sub init {
-    $_[0]->sources([]);
     $_[0]->paragraphs(2,8);
     $_[0]->sentences(2,8);
     $_[0]->words(5,15);
