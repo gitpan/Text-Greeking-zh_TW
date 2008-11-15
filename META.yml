@@ -1,14 +1,22 @@
-abstract: ~
-author: Lukhnos D. Liu C<< <lukhnos@gmail.com> >>
-build_requires: 
+---
+abstract: 'A module for generating meaningless Chinese text that creates the illusion of the finished document.'
+author:
+  - 'Lukhnos D. Liu C<< <lukhnos@gmail.com> >>'
+build_requires:
   Test::More: 0.42
 distribution_type: module
-generated_by: Module::Install version 0.64
+generated_by: 'Module::Install version 0.77'
 license: perl
-no_index: 
-  directory: 
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Text-Greeking-zh_TW
+no_index:
+  directory:
     - inc
     - t
-requires: 
+requires:
   perl: 5.8.0
-version: 0.0.3
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.0.4

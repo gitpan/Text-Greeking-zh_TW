@@ -7,7 +7,7 @@ use utf8;
 
 use List::Util qw(shuffle);
 
-our $VERSION = '0.0.3';
+our $VERSION = '0.0.4';
 
 sub new {
     my $class =shift;
@@ -90,9 +90,24 @@ sub _generate {
     }
 }
 
+my $corpus;
+sub add_source {
+    my ($self, $source) = @_;
+    if (ref $source) {
+        warn "err - source sould be a scalar.";
+        return;
+    }
+
+    $corpus .= $source;
+    return $self;
+}
+
 # lukhnos.org
 sub corpus {
-    return <<CORPUS;
+    if ($corpus) {
+        return $corpus;
+    } else {
+        return <<CORPUS;
 
 她終於有勇氣重新開箱，拾出當年所封存的那些記憶。只不過那也是最後一次，那些記憶在開箱之後，不再散發香水的味道；所拾出的東西，也就直接進了垃圾袋。
 
@@ -127,6 +142,7 @@ sub corpus {
 第二天的清醒也因此變得如此值得期待了起來。她開始想獨自說說那隱沒帶下的無垠的事。
 
 CORPUS
+    }
 }
 
 1; # Magic true value required at end of module
@@ -138,13 +154,14 @@ Text::Greeking::zh_TW - A module for generating meaningless Chinese text that cr
 
 =head1 VERSION
 
-This document describes Text::Greeking::zh_TW version 0.0.1
+This document describes Text::Greeking::zh_TW version 0.0.4
 
 =head1 SYNOPSIS
 
   my $g = Text::Greeking::zh_TW->new;
   $g->paragraphs(3,15); # min of 1 paragraph and a max of 2
   $g->sentences(1,10);  # min of 2 sentences per paragraph and a max of 5
+  $g->add_source($scalar); # use text yourself, not requisite
   print $g->generate;
 
 =head1 DESCRIPTION
@@ -170,6 +187,12 @@ Sets the minimum and maximum number of sentences to generate per paragraph. Defa
 =item generate
 
 Returns a body of random text generated from a randomly selected source using the minimum and maximum values set by paragraphs, sentences, and words minimum and maximum values. If generate is called without any sources a standard Lorem Ipsum block is used added to the sources and then used for processing the random text.
+
+=item add_source($scalar)
+
+Add text of yourself as corpus. Return instance itself, so we can add source serially.
+
+    $g->add_source($source_one)->add_source($source_two);
 
 =back
 
@@ -203,7 +226,7 @@ Kang-min Liu  C<< <gugod@gugod.org> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2007, Kang-min Liu C<< <gugod@gugod.org> >>, Lukhnos D. Liu C<< <lukhnos@gmail.com> >>. All rights reserved.
+Copyright (c) 2007, 2008, Kang-min Liu C<< <gugod@gugod.org> >>, Lukhnos D. Liu C<< <lukhnos@gmail.com> >>. 
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
